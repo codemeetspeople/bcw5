@@ -57,4 +57,17 @@ TEST_CASE( "Tests for Unit class" ) {
         unit->increaseHP(20);
         REQUIRE( unit->getHP() == hp );
     }
+
+    SECTION( "Unit attack tests" ) {
+        Unit *u1 = new Unit(150, 20, "U1");
+        Unit *u2 = new Unit(150, 20, "U2");
+
+        REQUIRE( u1->getHP() == 150 );
+        REQUIRE( u2->getHP() == 150 );
+
+        u1->attack(u2);
+
+        REQUIRE( u1->getHP() == 140 );
+        REQUIRE( u2->getHP() == 130 );
+    }
 }
