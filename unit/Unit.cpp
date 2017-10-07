@@ -1,10 +1,14 @@
 #include "Unit.h"
 
 Unit::Unit(int hp, int dmg, const char* title)
-    : state(new State(hp, dmg, title)) {}
+    : state(new State(hp, dmg, title))
+    {
+        this->_attack = new Attack(this);
+    }
 
 Unit::~Unit() {
     delete this->state;
+    delete this->_attack;
 }
 
 int Unit::getHP() const {
@@ -33,6 +37,14 @@ void Unit::takeDamage(int dmg) {
 
 void Unit::increaseHP(int hp) {
     this->state->increaseHP(hp);
+}
+
+void Unit::attack(Unit* enemy) {
+    this->_attack->attack(enemy);
+}
+
+void Unit::counterAttack(Unit* enemy) {
+    this->_attack->counterAttack(enemy);
 }
 
 std::ostream& operator<<(std::ostream& out, const Unit& unit) {
