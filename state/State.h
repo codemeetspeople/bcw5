@@ -17,8 +17,8 @@ class State {
         State(int hp, int dmg, const char* title);
         ~State();
 
-        int getHp() const;
-        int getHpLimit() const;
+        int getHP() const;
+        int getHPLimit() const;
         int getDmg() const;
         const char* getTitle() const;
 

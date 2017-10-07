@@ -11,11 +11,11 @@ State::State(int hp, int dmg, const char* title)
 
 State::~State() {}
 
-int State::getHp() const {
+int State::getHP() const {
     return this->hp;
 }
 
-int State::getHpLimit() const {
+int State::getHPLimit() const {
     return this->hpLimit;
 }
 
@@ -51,7 +51,7 @@ void State::increaseHP(int hp) {
 
 std::ostream& operator<<(std::ostream& out, const State& state) {
     out << state.getTitle() << " [";
-    out << "hp: (" << state.getHp() << "/" << state.getHpLimit() << "), ";
+    out << "hp: (" << state.getHP() << "/" << state.getHPLimit() << "), ";
     out << "dmg: " << state.getDmg() << "]";
 
     return out;
