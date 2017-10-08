@@ -6,14 +6,14 @@
 class Unit;
 
 class Attack {
-    private:
+    protected:
         Unit* instance;
 
     public:
         Attack(Unit* instance);
-        ~Attack();
-        void attack(Unit* enemy);
-        void counterAttack(Unit* enemy);
+        virtual ~Attack();
+        virtual void attack(Unit* enemy);
+        virtual void counterAttack(Unit* enemy);
 };
 
 #endif // ATTACK_H

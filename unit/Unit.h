@@ -9,13 +9,13 @@
 class Attack;
 
 class Unit {
-    private:
+    protected:
         State* state;
         Attack* _attack;
 
     public:
         Unit(int hp, int dmg, const char* title);
-        ~Unit();
+        virtual ~Unit();
 
         int getHP() const;
         int getHPLimit() const;
@@ -23,11 +23,11 @@ class Unit {
         const char* getTitle() const;
         State& getState() const;
 
-        void takeDamage(int dmg);
-        void increaseHP(int hp);
+        virtual void takeDamage(int dmg);
+        virtual void increaseHP(int hp);
 
-        void attack(Unit* enemy);
-        void counterAttack(Unit* enemy);
+        virtual void attack(Unit* enemy);
+        virtual void counterAttack(Unit* enemy);
 };
 
 std::ostream& operator<<(std::ostream& out, const Unit& unit);

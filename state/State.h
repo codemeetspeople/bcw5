@@ -5,7 +5,7 @@
 #include "../exceptions.h"
 
 class State {
-    private:
+    protected:
         int hp;
         int hpLimit;
         int dmg;
@@ -15,15 +15,15 @@ class State {
 
     public:
         State(int hp, int dmg, const char* title);
-        ~State();
+        virtual ~State();
 
         int getHP() const;
         int getHPLimit() const;
         int getDmg() const;
         const char* getTitle() const;
 
-        void takeDamage(int dmg);
-        void increaseHP(int hp);
+        virtual void takeDamage(int dmg);
+        virtual void increaseHP(int hp);
 };
 
 std::ostream& operator<<(std::ostream& out, const State& state);
