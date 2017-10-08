@@ -11,12 +11,11 @@ class State {
         int dmg;
         const char* title;
 
-        void ensureIsAlive();
-
     public:
         State(int hp, int dmg, const char* title);
         virtual ~State();
 
+        void ensureIsAlive();
         int getHP() const;
         int getHPLimit() const;
         int getDmg() const;
