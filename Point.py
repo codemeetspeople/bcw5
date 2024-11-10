@@ -34,30 +34,57 @@ class Point:
         return f'({self.x}, {self.y})'
 
     def __eq__(self, other):
-        if not isistance(other, self.__class__):
+        if not isinstance(other, self.__class__):
             return NotImplemented
         return self.x == other.x and self.y == other.y
 
     def __ne__(self, other):
-        if not isistance(other, self.__class__):
+        if not isinstance(other, self.__class__):
             return NotImplemented
         return not self == other
 
     def __add__(self, other):
-        if not isistance(other, self.__class__):
+        if not isinstance(other, self.__class__):
             return NotImplemented
         return self.__class__(self.x + other.x, self.y + other.y)
 
     def __sub__(self, other):
-        if not isistance(other, self.__class__):
+        if not isinstance(other, self.__class__):
             return NotImplemented
         return self.__class__(self.x - other.x, self.y - other.y)
 
     def distance(self, other):
-        if not isistance(other, self.__class__):
+        if not isinstance(other, self.__class__):
             raise ValueError()
 
         return math.hypot(self.x - other.x, self.y - other.y)
 
-a = Point(5.0, 10.0)
+
+class ColorPoint(Point):
+    def __init__(self, x=0.0, y=0.0, color='Black'):
+        super().__init__(x, y)
+        self._color = str(color)
+
+    @property
+    def color(self):
+        return self._color
+
+    @color.setter
+    def color(self, value):
+        self._color = str(value)
+
+    def __str__(self):
+        return f'({self.x}, {self.y}, {self.color})'
+
+    def __eq__(self, other):
+        if not isinstance(other, self.__class__):
+            return NotImplemented
+        return super().__eq__(other) and self.color == other.color
+
+
+
+a = ColorPoint()
+b = ColorPoint(0.0, 4.0, 'Black')
+
 print(a)
+
