@@ -20,7 +20,15 @@ class Point:
     def distance(self, other):
         return math.hypot(self.x-other.x, self.y-other.y)
 
+    def __add__(self, other):
+        obj = self.__class__(self.x+other.x, self.y+other.y)
+        return obj
+
+    def __iadd__(self, other):
+        self.x += other.x
+        self.y += other.y
+
 a = Point(0, 3)
 b = Point(4, 0)
 
-print(a.distance(b))
+print(a+b)
